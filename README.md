@@ -15,7 +15,7 @@ add solution for task1 task2 task3 task4
 
 add folder topic_04
 
-add solution for task1 task2 
+add solution for task1 task2 operations functions calc
 
 add folder topic_05
 
