@@ -10,7 +10,7 @@ logging.basicConfig(
 )
 
 def main_calc():
-    logging.info("Калькулятор запущено.")
+    logging.info("Калькулятор start.")
     print("Калькулятор запущено! Введіть 'exit' для виходу.")
     
     while True:
