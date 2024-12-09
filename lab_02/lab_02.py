@@ -38,16 +38,19 @@ def printAllList():
         print(strForPrint)
     return
 
-def addNewElement():
-    name = input("Будь ласка, введіть ім'я студента: ")
-    phone = input("Будь ласка, введіть телефон студента: ")
-    address = input("Будь ласка, введіть адресу студента: ")
-    email = input("Будь ласка, введіть електронну пошту студента: ")
+def addNewElement(name=None, phone=None, address=None, email=None):
+    if name is None:
+        name = input("Будь ласка, введіть ім'я студента: ")
+    if phone is None:
+        phone = input("Будь ласка, введіть телефон студента: ")
+    if address is None:
+        address = input("Будь ласка, введіть адресу студента: ")
+    if email is None:
+        email = input("Будь ласка, введіть електронну пошту студента: ")
     
-    # Створюємо новий запис
     newItem = {"name": name, "phone": phone, "address": address, "email": email}
     
-    # Знаходимо правильну позицію для вставки, щоб список залишався відсортованим за іменем
+    # Insert in sorted order
     insertPosition = 0
     for item in students_list:
         if name > item["name"]:
@@ -58,8 +61,10 @@ def addNewElement():
     print("Новий елемент був доданий")
     return
 
-def deleteElement():
-    name = input("Будь ласка, введіть ім'я студента, якого потрібно видалити: ")
+def deleteElement(name=None):
+    if name is None:
+        name = input("Будь ласка, введіть ім'я студента, якого потрібно видалити: ")
+    
     deletePosition = -1
     for item in students_list:
         if name == item["name"]:
@@ -68,12 +73,14 @@ def deleteElement():
     if deletePosition == -1:
         print("Елемент не знайдений")
     else:
-        print(f"Студента знайдено на позиції {deletePosition}")
         del students_list[deletePosition]
+        print(f"Студента '{name}' видалено.")
     return
 
-def updateElement():
-    name = input("Будь ласка, введіть ім'я студента, якого потрібно оновити: ")
+def updateElement(name=None, phone=None, address=None, email=None):
+    if name is None:
+        name = input("Будь ласка, введіть ім'я студента, якого потрібно оновити: ")
+    
     updatePosition = -1
     for index, item in enumerate(students_list):
         if item["name"] == name:
@@ -84,23 +91,13 @@ def updateElement():
         print("Студент не знайдений")
         return
     
-    # Виводимо поточну інформацію про студента
-    print(f"Поточна інформація: Ім'я: {students_list[updatePosition]['name']}, "
-          f"Телефон: {students_list[updatePosition]['phone']}, "
-          f"Адреса: {students_list[updatePosition]['address']}, "
-          f"Електронна пошта: {students_list[updatePosition]['email']}")
-    
-    # Запитуємо нову інформацію
-    phone = input("Будь ласка, введіть новий телефон: ")
-    address = input("Будь ласка, введіть нову адресу: ")
-    email = input("Будь ласка, введіть нову електронну пошту: ")
-
-    # Оновлюємо дані
-    students_list[updatePosition]["phone"] = phone
-    students_list[updatePosition]["address"] = address
-    students_list[updatePosition]["email"] = email
+    # Update fields if provided, otherwise ask for input
+    students_list[updatePosition]["phone"] = phone or input("Будь ласка, введіть новий телефон: ")
+    students_list[updatePosition]["address"] = address or input("Будь ласка, введіть нову адресу: ")
+    students_list[updatePosition]["email"] = email or input("Будь ласка, введіть нову електронну пошту: ")
     print(f"Дані студента {name} оновлені.")
     return
+
 
 def main():
     if len(sys.argv) < 2:
