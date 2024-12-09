@@ -16,7 +16,7 @@ def main_calc():
     while True:
         command = input("Введіть операцію (+, -, *, /) або 'exit': ").strip()
         if command.lower() == "exit":
-            logging.info("Калькулятор end.")
+            logging.info("Калькулятор завершено.")
             print("Калькулятор завершено.")
             break
         

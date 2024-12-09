@@ -21,10 +21,10 @@ def input_num(prompt):
         except ValueError:
             print("Помилка: введене значення не є числом. Спробуйте ще раз.")
         except KeyboardInterrupt:
-            print("\n Програму перервано користувачем.")
+            print("\nПрограму перервано користувачем.")
             exit(0)
         except EOFError:
-            print("\n Завершено введення (EOF).")
+            print("\nЗавершено введення (EOF).")
             exit(0)
 
 # Головна функція калькулятора
