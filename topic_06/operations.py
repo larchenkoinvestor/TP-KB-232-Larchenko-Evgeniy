@@ -1,6 +1,12 @@
 import logging
 from functions import add, subtract, multiply, divide
 
+def input_num(prompt):
+    try:
+        return float(input(prompt))
+    except ValueError:
+        raise ValueError("Будь ласка, введіть коректне число.")
+
 def execute_operation(command, a, b):
     operations = {
         "+": add,
